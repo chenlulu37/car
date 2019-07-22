@@ -16,14 +16,14 @@
           <span>状态</span>
           <span>是否有违章</span>
         </li>
-        <li>
-          <span>大众斯柯达</span>
-          <span>豫A 00000</span>
-          <span>123456789012</span>
-          <span>2019-7-10</span>
-          <span>2019-8-10</span>
-          <span>代还</span>
-          <span>无</span>
+        <li v-for="(item, index) in carall" :key="index">
+          <span>{{item.vehicle}}</span>
+          <span>{{item.plateNumber}}</span>
+          <span>{{item.orderNumber}}</span>
+          <span>{{item.carTime}}</span>
+          <span>{{item.collectionTime}}</span>
+          <span>{{item.huanCheZhuangTai}}</span>
+          <span>{{item.failure}}</span>
         </li>
       </ul>
     </div>
@@ -64,12 +64,26 @@ export default {
     return {
       divshow: true,
       colorshow: false,
+      // input 的plackholder
       carNunber: "请输入车牌号",
       carTex: "车辆查询",
+      // input 的内容
       carVal: "",
+      // 车辆信息
+      carall:[],
       carLeft: {},
-      carRight: []
+      carRight: [],
     };
+  },
+  mounted(){
+    this.$axios.get('http://172.25.1.194:8080/order/zuijinchuzu')
+    .then((res)=>{
+      // console.log(res);
+      // console.log(res.data);
+      this.carall = res.data;
+    }).catch((err)=>{
+      throw err
+    })
   },
   methods: {
     changes() {
@@ -81,14 +95,17 @@ export default {
           // console.log(this.carVal);
           this.carLeft = res.data[0];
           this.carRight = res.data[1];
-          console.log(this.carLeft);
-          console.log(this.carRight);
+          // console.log(this.carLeft);
+          // console.log(this.carRight);
         });
       this.divshow = !this.divshow;
       this.colorshow = !this.colorshow;
       if (this.carTex == "车辆查询") {
         this.carTex = "返回查询";
-      } else {
+        this.carNunber = this.carVal;
+        this.carVal = '';
+      } else if(this.carTex == '返回查询'){
+        this.carNunber = '请输入车牌号'
         this.carTex = "车辆查询";
       }
     }
@@ -148,6 +165,8 @@ export default {
   }
   .reg_one {
     background: white;
+    height: 435px;
+    overflow-y: auto;
     h2 {
       font-family: MicrosoftYaHei;
       font-size: 18px;

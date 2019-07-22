@@ -14,51 +14,35 @@
               <span class="right">{{item.stringDate}}</span>
             </p>
           </div>
-          <!-- <p >
-            关于及其退押金的新流程通知
-            <span class="right">2019-7-2</span>
-          </p>
-          <p>
-            关于违章车辆处理的新标准通知
-            <span class="right">2019-7-3</span>
-          </p>
-          <p>
-            关于违章车辆处理的新标准通知
-            <span class="right">2019-7-3</span>
-          </p>
-          <p>
-            关于违章车辆处理的新标准通知
-            <span class="right">2019-7-3</span>
-          </p>-->
         </div>
         <ul>
           <li>
             <div class="bg_"></div>
-            <div>
+            <router-link to="/home/member">
               <img src="../../assets/hometex/2-1.png" />
               <p>会员查询</p>
-            </div>
+            </router-link>
           </li>
           <li>
             <div class="bg_"></div>
-            <div>
+            <router-link to="/home/management">
               <img src="../../assets/hometex/2-2.png" />
               <p>订单查询</p>
-            </div>
+            </router-link>
           </li>
           <li>
             <div class="bg_"></div>
-            <div>
+            <router-link to="/home/registration">
               <img src="../../assets/hometex/2-3.png" />
               <p>车辆查询</p>
-            </div>
+            </router-link>
           </li>
           <li>
             <div class="bg_"></div>
-            <div>
+            <a>
               <img src="../../assets/hometex/2-4.png" />
               <p>违章查询</p>
-            </div>
+            </a>
           </li>
         </ul>
       </div>
@@ -207,7 +191,7 @@ export default {
           &:nth-of-type(4) {
             background: url("../../assets/hometex/1-4.png") no-repeat 100% 100%;
           }
-          div {
+          a {
             width: 100%;
             height: 100%;
             position: absolute;
@@ -226,6 +210,11 @@ export default {
           }
           .bg_ {
             background: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
           }
         }
       }
