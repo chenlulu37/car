@@ -6,7 +6,7 @@
       </div>
       <button @click="query">会员查询</button>
     </div>
-    <div class="memberinfo">
+    <div class="memberinfo" v-show="infoshow">
       <div class="memberinfoleft">
         <div class="headinfo">
           <div>
@@ -89,7 +89,8 @@ export default {
       phone: "",
       userinfo: "",
       userzuce: "",
-      usercz: ""
+      usercz: "",
+      infoshow:false,
     };
   },
   filters: {
@@ -115,8 +116,8 @@ export default {
           console.log(res.data);
           this.userinfo = res.data[0];
           this.usercz = res.data[1];
-
           this.userzuce = res.data[2];
+          this.infoshow=true;
         })
         .catch(err => {
           console.log(err);
@@ -323,6 +324,7 @@ export default {
     .memberinforight {
       flex: 1;
       padding: 19px 25px 0;
+      height: 85%;
       header {
         font-size: 18px;
         button {
