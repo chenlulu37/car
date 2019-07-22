@@ -20,9 +20,9 @@
           <span>{{item.vehicle}}</span>
           <span>{{item.plateNumber}}</span>
           <span>{{item.orderNumber}}</span>
-          <span>{{item.carTime}}</span>
-          <span>{{item.collectionTime}}</span>
-          <span>{{item.huanCheZhuangTai}}</span>
+          <span>{{item.carTime| dates}}</span>
+          <span>{{item.collectionTime | dates}}</span>
+          <span>{{item.huanCheZhuangTai }}</span>
           <span>{{item.failure}}</span>
         </li>
       </ul>
